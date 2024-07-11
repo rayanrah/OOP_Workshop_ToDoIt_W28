@@ -9,9 +9,9 @@ public class AppUser {
     private AppRole role;
 
     public AppUser(String password, AppRole role, String userName) {
-        this.password = password;
-        this.userName = userName;
-        this.role = role;
+        setUserName(userName);
+        setPassword(password);
+        setRole(role);
     }
 
     private String getPassword() {
@@ -19,6 +19,7 @@ public class AppUser {
     }
 
     public void setPassword(String password) {
+        validateInput("Password", password);
         this.password = password;
     }
 
@@ -27,6 +28,9 @@ public class AppUser {
     }
 
     public void setRole(AppRole role) {
+        if (role == null) {
+            throw new IllegalArgumentException("Role cannot be null");
+        }
         this.role = role;
     }
 
@@ -35,15 +39,19 @@ public class AppUser {
     }
 
     public void setUserName(String userName) {
+        validateInput("Username", userName);
         this.userName = userName;
+    }
+
+    private void validateInput (String ParaName, String paraFullName) {
+        if (paraFullName == null || paraFullName.isEmpty()) {
+            throw new IllegalArgumentException(ParaName + " cannot be null or empty");
+        }
     }
 
     @Override
     public String toString() {
-        return "AppUser{" +
-                "userName='" + userName + '\'' +
-                ", role=" + role +
-                '}';
+        return super.toString();
     }
 
     @Override
