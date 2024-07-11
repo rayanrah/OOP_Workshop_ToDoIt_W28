@@ -16,7 +16,7 @@ public class Person {
     // --------------Constructors-----------------//
 
     public Person(String firstName, String lastName, String email, AppUser credentials) {
-        this.id= PersonalIdSequencer.nextId();
+        this.id = PersonalIdSequencer.nextId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -24,12 +24,11 @@ public class Person {
     } // end of constructor
 
     public Person(String firstName, String lastName, String email) {
-        this.id= PersonalIdSequencer.nextId();
+        this.id = PersonalIdSequencer.nextId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
-//----------------Getters--------------------//
 
     public int getId() {
         return id;
@@ -39,16 +38,36 @@ public class Person {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public AppUser getCredentials() {
         return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        if (credentials == null) {
+            throw new IllegalArgumentException("credentials cannot be null...");
+        } else {
+            this.credentials = credentials;
+        }
     }
 
     @Override
@@ -72,28 +91,5 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, email);
-    }
-
-    //----------------Setters--------------------//
-
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setCredentials(AppUser credentials) {
-        if (credentials == null) {
-            throw new IllegalArgumentException("credentials cannot be null...");
-        } else {
-            this.credentials = credentials;
-        }
     }
 } // end of class
