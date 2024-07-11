@@ -2,22 +2,22 @@ package se.lexicon.sequencers;
 
 public class TodoItemIdSequencer {
 
-    private int currentId = 0;
+    public static int currentId = 1;
 
     // Implement the nextId() method to retrieve the next available id and update the currentId.
-    public int nextId() {
+    public static int nextId() {
         currentId++;
         setCurrentId(currentId);
         return currentId;
     }
 
     // Implement the getter method to retrieve the current id.
-    public int getCurrentId() {
+    public static int getCurrentId() {
         return currentId;
     }
 
     // Implement the set(int newId) method to set a new value for the currentId.
-    public void setCurrentId(int nextId) {
-        this.currentId = nextId;
+    public static void setCurrentId(int nextId) {
+        currentId = nextId;
     }
 }
