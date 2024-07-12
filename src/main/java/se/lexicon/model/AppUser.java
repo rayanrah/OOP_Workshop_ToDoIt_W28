@@ -8,7 +8,7 @@ public class AppUser {
     private String password;
     private AppRole role;
 
-    public AppUser(String password, AppRole role, String userName) {
+    public AppUser(String userName, String password, AppRole role) {
         setUserName(userName);
         setPassword(password);
         setRole(role);
@@ -51,7 +51,10 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "AppUser{" +
+                "userName='" + userName + '\'' +
+                ", role=" + role +
+                '}';
     }
 
     @Override
@@ -66,4 +69,6 @@ public class AppUser {
     public int hashCode() {
         return Objects.hash(userName, role);
     }
+
+
 }
